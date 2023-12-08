@@ -1,13 +1,14 @@
 const express =  require('express')
 
 const app = express();
+
 require("dotenv").config()
+//import routes
 
-app.get("/", (req,res) => {
-    res.send("from nodemone updated")
-});
+const userRoutes =  require('./routes/user')
 
-const port = process.env.PORT || 8000
+
+const port = process.env.PORT || 7000
 
 
 /*to run the app */
@@ -29,3 +30,6 @@ mongoose.connect(
     }
 ). then(() =>console.log('DB Connected'))
 
+//routes
+
+app.use("/",userRoutes)
